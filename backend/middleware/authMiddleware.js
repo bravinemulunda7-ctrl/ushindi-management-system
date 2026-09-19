@@ -17,7 +17,7 @@ const protect = async (req, res, next) => {
 
     console.log("Received Token:", token);
 
-    const decoded = jwt.verify(token, "mysecretkey");
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     console.log("Decoded:", decoded);
 
