@@ -13,7 +13,7 @@ const payrollRoutes = require("./routes/payrollRoutes");
 const reportRoutes = require("./routes/reportRoutes");
 const userRoutes = require("./routes/userRoutes");
 const departmentRoutes = require("./routes/departmentRoutes");
-
+const auditLogRoutes = require("./routes/AuditLogRoutes");
 const app = express();
 
 // Connect Database
@@ -34,6 +34,7 @@ app.use("/api/payroll", payrollRoutes);
 app.use("/api/reports", reportRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/departments", departmentRoutes);
+app.use("/api/audit-logs", auditLogRoutes);
 
 // Home Route
 app.get("/", (req, res) => {
