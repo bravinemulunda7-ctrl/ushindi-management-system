@@ -7,7 +7,15 @@ const {
 
 const protect = require("../middleware/authMiddleware");
 
-// Only authenticated users can access audit logs
-router.get("/", protect, getAuditLogs);
+// Only Director can access audit logs
+router.get("/", protect, (req, res, next) => {
+  if (req.user.role !== "Director") {
+    return res.status(403).json({
+      message: "Access denied. Director only.",
+    });
+  }
+
+  next();
+}, getAuditLogs);
 
 module.exports = router;
